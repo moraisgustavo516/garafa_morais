@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Morais Garrafas - Garrafa Térmica Inteligente para Atletas</title>
+  <meta name="description" content="Garrafa térmica com controle de temperatura via app Google. Exclusiva para atletas. Compre na Shopee com frete grátis."/>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+  <style>
+    :root {
+      --bg: #0a0a0a;
+      --surface: #1a1a1a;
+      --text: #f5f5f5;
+      --text-muted: #aaaaaa;
+      --primary: #00d4ff;
+      --primary-dark: #00a8cc;
+      --accent: #ff4757;
+      --border: #333;
+      --radius: 16px;
+      --shadow: 0 12px 32px rgba(0,0,0,0.4);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+    a { color: var(--primary); text-decoration: none; }
+    a:hover { color: var(--primary-dark); }
+
+    /* Header */
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      background: rgba(10,10,10,0.95);
+      backdrop-filter: blur(12px);
+      z-index: 1000;
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 900;
+      letter-spacing: -1px;
+    }
+    .logo span { color: var(--primary); }
+    nav ul {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    nav a {
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: 0.2s;
+    }
+    .cart-btn {
+      background: var(--primary);
+      color: #000;
+      padding: 0.6rem 1.2rem;
+      border-radius: 50px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .cart-btn:hover { background: var(--primary-dark); color: #fff; }
+    .cart-count {
+      background: var(--accent);
+      color: #fff;
+      font-size: 0.7rem;
+      width: 18px; height: 18px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+    }
+
+    /* Hero */
+    .hero {
+      padding: 140px 2rem 100px;
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .hero h1 {
+      font-size: 3.8rem;
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 span { color: var(--primary); }
+    .hero p {
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+      max-width: 500px;
+    }
+    .btn-primary {
+      background: var(--primary);
+      color: #000;
+      padding: 1rem 2rem;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: 0.3s;
+      cursor: pointer;
+    }
+    .btn-primary:hover { background: var(--primary-dark); color: #fff; }
+    .hero-image {
+      position: relative;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    .hero-image img { width: 100%; display: block; }
+
+    /* Features */
+    .features {
+      padding: 100px 2rem;
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+    }
+    .container { max-width: 1400px; margin: 0 auto; }
+    .section-title {
+      text-align: center;
+      font-size: 2.8rem;
+      font-weight: 800;
+      margin-bottom: 3rem;
+    }
+    .section-title span { color: var(--primary); }
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    .feature-card {
+      background: var(--bg);
+      padding: 2rem;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      transition: 0.3s;
+    }
+    .feature-card:hover {
+      transform: translateY(-10px);
+      border-color: var(--primary);
+      box-shadow: var(--shadow);
+    }
+    .feature-icon {
+      width: 64px; height: 64px;
+      background: var(--primary);
+      color: #000;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+    }
+
+    /* Product */
+    .product {
+      padding: 100px 2rem;
+    }
+    .product-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .product-info h2 {
+      font-size: 3rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+    }
+    .price {
+      font-size: 2.8rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin: 1.5rem 0;
+    }
+    .old-price {
+      text-decoration: line-through;
+      color: var(--text-muted);
+      font-size: 1.3rem;
+      margin-left: 1rem;
+    }
+    .features-list {
+      list-style: none;
+      margin: 2rem 0;
+    }
+    .features-list li {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
+    }
+
+    /* BMC */
+    .bmc {
+      padding: 100px 2rem;
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+    }
+    .bmc-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+    .bmc-card {
+      background: var(--bg);
+      padding: 1.5rem;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+    }
+    .bmc-card h4 {
+      color: var(--primary);
+      font-weight: 700;
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
+    }
+
+    /* BMC Image */
+    .bmc-image {
+      text-align: center;
+      margin: 2rem 0;
+      padding: 1rem;
+      background: var(--bg);
+      border-radius: var(--radius);
+      border: 1px dashed var(--border);
+    }
+    .bmc-image img {
+      max-width: 100%;
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+    }
+
+    /* Footer */
+    footer {
+      background: var(--surface);
+      padding: 80px 2rem 40px;
+      border-top: 1px solid var(--border);
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2rem;
+      max-width: 1400px;
+      margin: 0 auto 3rem;
+    }
+    .footer-col h3 {
+      font-size: 1.3rem;
+      margin-bottom: 1.5rem;
+      color: var(--primary);
+    }
+    .footer-col ul { list-style: none; }
+    .footer-col a {
+      display: block;
+      margin-bottom: 0.8rem;
+      color: var(--text-muted);
+      transition: 0.2s;
+    }
+    .footer-col a:hover { color: var(--primary); }
+    .copyright {
+      text-align: center;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 768px) {
+      .hero, .product-grid { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 2.8rem; }
+      nav ul { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="nav-container">
+      <div class="logo">Morais<span>Garrafas</span></div>
+      <nav>
+        <ul>
+          <li><a href="#home">Início</a></li>
+          <li><a href="#produto">Produto</a></li>
+          <li><a href="#bmc">BMC</a></li>
+          <li><a href="#contato">Contato</a></li>
+        </ul>
+      </nav>
+      <div class="cart-btn" onclick="toggleCart()">
+        <i class="fas fa-shopping-cart"></i>
+        <span id="cart-count" class="cart-count">0</span>
+        Carrinho
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero" id="home">
+    <div>
+      <h1>Garrafa <span>Tecnológica</span> para Atletas</h1>
+      <p>Controle a temperatura da sua água em tempo real pelo app do Google. Prova d'água, design premium e até 12h de isolamento térmico.</p>
+      <button class="btn-primary" onclick="addToCart()">
+        <i class="fas fa-cart-plus"></i> Comprar na Shopee
+      </button>
+    </div>
+    <div class="hero-image">
+      <img src="c:\Users\CEEC\Pictures\ChatGPT Image 28 de out. de 2025, 12_10_54.png" alt="Garrafa Morais" />
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="features">
+    <div class="container">
+      <h2 class="section-title">Por que escolher a <span>Morais Garrafas</span>?</h2>
+      <div class="grid-3">
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-thermometer-half"></i></div>
+          <h3>Controle de Temperatura</h3>
+          <p>Ajuste a temperatura ideal pelo app Google em tempo real.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+          <h3>100% à Prova d'Água</h3>
+          <p>Certificação IPX7. Use na chuva, piscina ou treino intenso.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-bolt"></i></div>
+          <h3>Tecnologia Google</h3>
+          <p>Integração nativa com Google Assistant e Wear OS.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Product -->
+  <section class="product" id="produto">
+    <div class="container">
+      <div class="product-grid">
+        <div class="product-image">
+          <img src="c:\Users\CEEC\Pictures\ChatGPT Image 28 de out. de 2025, 12_10_54.png" alt="Garrafa Morais Pro" />
+        </div>
+        <div class="product-info">
+          <h2>Garrafa Morais Pro Athlete</h2>
+          <div class="price">R$ 750,00 <span class="old-price">R$ 1.700,00</span></div>
+          <ul class="features-list">
+            <li><i class="fas fa-check-circle"></i> Capacidade: 1.5L</li>
+            <li><i class="fas fa-check-circle"></i> Bateria: 30 dias</li>
+            <li><i class="fas fa-check-circle"></i> App Google integrado</li>
+            <li><i class="fas fa-check-circle"></i> Aço inoxidável 304</li>
+            <li><i class="fas fa-check-circle"></i> Frete grátis</li>
+          </ul>
+          <button class="btn-primary" onclick="addToCart()">
+            <i class="fas fa-cart-plus"></i> Adicionar ao Carrinho
+          </button>
+          <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-muted);">
+            Compra segura via <strong>Shopee</strong> | Entrega em até 3 dias úteis
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BMC -->
+  <section class="bmc" id="bmc">
+    <div class="container">
+      <h2 class="section-title">Business Model <span>Canvas</span></h2>
+
+      <!-- BMC Image from your PNG (converted to base64) -->
+      <div class="bmc-image">
+        <img src="bmc.png" alt="BMC Morais Garrafas" />
+        <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-muted);">
+          <em>Imagem do BMC completo (anexada no PDF original)</em>
+        </p>
+      </div>
+
+      <div class="bmc-grid">
+        <div class="bmc-card">
+          <h4>Parcerias Principais</h4>
+          <p>Indústria Stanley, Google, Shopee, Instagram, Facebook</p>
+        </div>
+        <div class="bmc-card">
+          <h4>Atividades Principais</h4>
+          <p>Desenvolvimento digital, prova d'água, reuniões diárias</p>
+        </div>
+        <div class="bmc-card">
+          <h4>Proposta de Valor</h4>
+          <p>Garrafa com temperatura personalizável para atletas</p>
+        </div>
+        <div class="bmc-card">
+          <h4>Relação com Cliente</h4>
+          <p>Site moraisgarrafas.com.br, Shopee, Instagram, Facebook</p>
+        </div>
+        <div class="bmc-card">
+          <h4>Segmentos de Cliente</h4>
+          <p>Atletas de alta performance, calor intenso</p>
+        </div>
+        <div class="bmc-card">
+          <h4>Recursos Principais</h4>
+          <p>Google tech, design premium, equipe dedicada</p>
+        </div>
+        <div class="bmc-card">
+          <h4>Estrutura de Custos</h4>
+          <p>Materiais, produção, marketing. Custo total R$1.700,00 → venda R$750,00</p>
+        </div>
+        <div class="bmc-card">
+          <h4>Fontes de Receitas</h4>
+          <p>Vendas online via Shopee e moraisgarrafas.com.br</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="contato">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h3>Morais<span>Garrafas</span></h3>
+          <p>A revolução térmica para atletas de elite.</p>
+        </div>
+        <div class="footer-col">
+          <h3>Links</h3>
+          <ul>
+            <li><a href="#home">Início</a></li>
+            <li><a href="#produto">Produto</a></li>
+            <li><a href="#bmc">BMC</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Comprar</h3>
+          <ul>
+            <li><a href="https://shopee.com.br" target="_blank">Shopee</a></li>
+            <li><a href="https://moraisgarrafas.com.br" target="_blank">Site Oficial</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Contato</h3>
+          <ul>
+            <li><a href="mailto:contato@moraisgarrafas.com.br">contato@moraisgarrafas.com.br</a></li>
+            <li><a href="https://instagram.com/moraisgarrafas" target="_blank">Instagram</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="copyright">
+        © 2025 Morais Garrafas. Todos os direitos reservados. | Desenvolvido por Gustavo Oliveira de Morais
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    let cartCount = 0;
+
+    function addToCart() {
+      cartCount++;
+      document.getElementById('cart-count').textContent = cartCount;
+      alert('Garrafa adicionada ao carrinho! Redirecionando para a Shopee...');
+      setTimeout(() => {
+        window.open('https://shopee.com.br/search?keyword=morais+garrafas', '_blank');
+      }, 1000);
+    }
+
+    function toggleCart() {
+      alert(`Você tem ${cartCount} item(s) no carrinho.\nRedirecionando para a Shopee...`);
+      window.open('https://shopee.com.br', '_blank');
+    }
+  </script>
+
+</body>
+</html>
